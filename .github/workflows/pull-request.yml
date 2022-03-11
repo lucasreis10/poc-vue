@@ -18,6 +18,9 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+      - name: Install vue-cli
+        run: npm install -g @vue/cli
       - name: Unit tests
         run: npm run test:unit
 
