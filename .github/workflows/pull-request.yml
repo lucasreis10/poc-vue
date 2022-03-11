@@ -8,19 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@master
-      - name: Build
+      - uses: actions/setup-node@v2
+        with:
+         node-version: '14'
+      - name: npm install
         run: npm install
-
-  tests:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@master
-      - name: Install vue-cli
-        run: npm install -g @vue/cli
-      - name: Unit tests
+      - name: npm build
+        run: npm run build
+      - name: Unit Tests
         run: npm run test:unit
+
+
 
