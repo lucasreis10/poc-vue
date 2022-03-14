@@ -1,6 +1,11 @@
 describe('ManageMovieView', () => {
-  it('Create new movie.', () => {
+  before(() => {
+    cy.intercept('POST', '/graphql', { fixture: 'movies-stubs.json' }).as('getMovies');
+
     cy.visit('/');
+  });
+
+  it('Create new movie.', () => {
     cy.get('[data-test-movie="btn-new-movie"]').click();
 
     cy.url().should('include', '/movies');
