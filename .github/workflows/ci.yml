@@ -17,6 +17,8 @@ jobs:
         run: npm run build
       - name: Unit Tests
         run: npm run test:unit
+      - name: E2E Tests
+        run: npm run test:e2e:headless
 
 
 
