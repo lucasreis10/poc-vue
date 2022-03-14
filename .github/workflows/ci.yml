@@ -4,7 +4,7 @@ on: [pull_request, push]
 
 jobs:
   build:
-    name: Build
+    name: Build + Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,7 +16,7 @@ jobs:
       - name: npm build
         run: npm run build
       - name: Unit Tests
-        run: npm run test:unit
+        run: npm run test:unit:coverage
       - name: E2E Tests
         run: npm run test:e2e:headless
 
