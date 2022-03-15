@@ -28,18 +28,6 @@ npm run test:unit
 ```
 
 #### Testes end-to-end
-
-Prmeiro rode stub serve
-```
-mock-json-server tests/e2e/stubs/stub.json --port=4000
-
-or
-
-npm run stub:serve
-```
-<i>É necessário instalar ``mock-json-server``.</i>
-
-Depois 
 ```
 npm run test:e2e
 ```
