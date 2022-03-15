@@ -1,0 +1,60 @@
+{
+  "data": {
+    "movies":[
+      {
+        "id":"1",
+        "name":"Interestelar",
+        "year":2014,
+        "genre":"Sci-Fi",
+        "duration":"2h 49m",
+        "imdbRating":8.7,
+        "__typename":"Movie"
+      },
+      {
+        "id":"2",
+        "name":"Dune",
+        "year":2021,
+        "genre":"Adventure",
+        "duration":"2h 35m",
+        "imdbRating":8.1,
+        "__typename":"Movie"
+      },
+      {
+        "id":"3",
+        "name":"Fight Club",
+        "year":1999,
+        "genre":"Drama",
+        "duration":"2h 19m",
+        "imdbRating":8.8,
+        "__typename":"Movie"
+      },
+      {
+        "id":"4",
+        "name":"Forrest Gump",
+        "year":1994,
+        "genre":"Drama",
+        "duration":"2h 22m",
+        "imdbRating":8.8,
+        "__typename":"Movie"
+      },
+      {
+        "id":"5",
+        "name":"The Curious Case of Benjamin Button",
+        "year":2008,
+        "genre":"Drama",
+        "duration":"2h 46m",
+        "imdbRating":7.8,
+        "__typename":"Movie"
+      },
+      {
+        "id":"6",
+        "name":"Gone Girl",
+        "year":2014,
+        "genre":"Drama",
+        "duration":"2h 29m",
+        "imdbRating":8.1,
+        "__typename":"Movie"
+      }
+    ]
+  }
+}
