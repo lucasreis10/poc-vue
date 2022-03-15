@@ -10,4 +10,5 @@ module.exports = {
       lines: 50,
     },
   },
+  setupFiles: ['./tests/unit/setup.js'],
 };

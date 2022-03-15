@@ -25,7 +25,7 @@ describe('SnackNotification.vue', () => {
     const vSnackbar = wrapper.find('[data-test-snackbar="wrapper"]');
     // setup:
     expect(paragraphTextMessage.text()).toBe(textMessage);
-    expect(vSnackbar.attributes().color).toBe('#4CAF50');
+    expect(vSnackbar.rootNode.componentOptions.propsData.color).toBe('#4CAF50');
   });
 
   it('Display error type message', async () => {
@@ -38,7 +38,7 @@ describe('SnackNotification.vue', () => {
     const vSnackbar = wrapper.find('[data-test-snackbar="wrapper"]');
     // setup:
     expect(paragraphTextMessage.text()).toBe(textMessage);
-    expect(vSnackbar.attributes().color).toBe('#FF5252');
+    expect(vSnackbar.rootNode.componentOptions.propsData.color).toBe('#FF5252');
   });
 
   it('Close snackbar clicking the button', async () => {
