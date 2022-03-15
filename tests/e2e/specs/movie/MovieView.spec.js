@@ -1,6 +1,6 @@
 describe('MovieView', () => {
   beforeEach(() => {
-    cy.intercept('POST', '/graphql*', { fixture: 'movies-stubs.json' }).as('getMovies');
+    cy.intercept('POST', '/', { fixture: 'movies-stubs.json' }).as('getMovies');
 
     cy.visit('/');
   });

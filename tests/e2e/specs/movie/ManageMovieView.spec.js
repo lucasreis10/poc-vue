@@ -1,13 +1,14 @@
 describe('ManageMovieView', () => {
   before(() => {
-    cy.intercept('POST', '/graphql', { fixture: 'movies-stubs.json' }).as('getMovies');
+    cy.intercept('POST', '/', { fixture: 'movies-stubs.json' }).as('getMovies');
 
     cy.visit('/');
   });
 
   it('Create new movie.', () => {
-    cy.get('[data-test-movie="btn-new-movie"]').click();
+    cy.wait('@getMovies');
 
+    cy.get('[data-test-movie="btn-new-movie"]').click();
     cy.url().should('include', '/movies');
 
     cy.get('[data-test-form-movie="input-name"]').type('Parasite').should('have.value', 'Parasite');
@@ -17,7 +18,7 @@ describe('ManageMovieView', () => {
     cy.get('[data-test-form-movie="input-duration"]').type('2h 12m').should('have.value', '2h 12m');
     cy.get('[data-test-form-movie="btn-save"]').click();
 
-    cy.get('[data-test-snackbar="btn-close-message"]').click();
+    cy.get('[data-test-snackbar="btn-close-message"]').click({ timeout: 20000 });
     cy.get('[data-test-snackbar="wrapper"]').should('not.be.visible');
 
     cy.url().should('include', '/');

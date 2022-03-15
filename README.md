@@ -51,6 +51,6 @@ npm run test:e2e
 
 * [XUnit Test Patterns - Four Phase Test](http://xunitpatterns.com/Four%20Phase%20Test.html)
 * [XUnit Test Patterns - Creation Method](http://xunitpatterns.com/Creation%20Method.html)
-
+* [Custom Data Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*)
 
 
