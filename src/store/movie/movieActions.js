@@ -38,15 +38,17 @@ export default {
     });
   },
 
-  async [MOVIE_ACTIONS.UPDATE_MOVIE](context, { id, payload }) {
+  async [MOVIE_ACTIONS.UPDATE_MOVIE](context, [id, payload]) {
     const movie = new MovieBuilder(payload)
       .setImdbRating(payload.imdbRating)
       .setYear(payload.year)
+      .withoutId()
+      .withoutTypename()
       .build();
 
     return apolloClient.mutate({
       mutation: movieMutations.UPDATE_MOVIE,
-      variables: { id, input: { ...movie } },
+      variables: { updateMovieId: id, input: { ...movie } },
     });
   },
 

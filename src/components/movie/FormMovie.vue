@@ -5,7 +5,7 @@
         <v-row justify="space-between">
           <v-col >
             <v-text-field
-              v-model="movie.name"
+              v-model="movieModel.name"
               :rules="nameRules"
               label="Movie name"
               required
@@ -15,7 +15,7 @@
 
           <v-col >
             <v-text-field
-              v-model="movie.genre"
+              v-model="movieModel.genre"
               label="Genre"
               required
               data-test-form-movie="input-genre"
@@ -26,7 +26,7 @@
         <v-row>
           <v-col >
             <v-text-field
-              v-model="movie.year"
+              v-model="movieModel.year"
               label="Year"
               type="number"
               data-test-form-movie="input-year"
@@ -35,7 +35,7 @@
 
           <v-col>
             <v-text-field
-              v-model="movie.imdbRating"
+              v-model="movieModel.imdbRating"
               label="Imdb Rating"
               type="number"
               data-test-form-movie="input-imdb-rating"
@@ -46,7 +46,7 @@
         <v-row>
           <v-col>
             <v-text-field
-              v-model="movie.duration"
+              v-model="movieModel.duration"
               label="Duration"
               data-test-form-movie="input-duration"
             ></v-text-field>
@@ -55,7 +55,7 @@
       </v-container>
       <v-btn
         data-test-form-movie="btn-save"
-        @click="save(movie)"
+        @click="save(movieModel)"
       >
         Save
       </v-btn>
@@ -83,11 +83,16 @@ export default {
       type: Function,
       required: true,
     },
+
+    movie: {
+      type: Object,
+      required: false,
+    },
   },
 
   data() {
     return {
-      movie: {},
+      movieModel: { ...this.movie },
       valid: false,
       nameRules: [
         (v) => !!v || 'Field is required',

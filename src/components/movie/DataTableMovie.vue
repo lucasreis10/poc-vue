@@ -22,7 +22,7 @@
           <td>{{ item.duration }}</td>
           <td>{{ item.year }}</td>
           <td>
-            <v-icon small class="mr-2">mdi-pencil</v-icon>
+            <v-icon small class="mr-2" @click="editMovie(item)">mdi-pencil</v-icon>
           </td>
           <td>
             <v-icon small class="mr-2" @click="deleteMovie(item.id)">mdi-delete</v-icon>
@@ -43,6 +43,10 @@ export default {
       required: true,
     },
     deleteMovie: {
+      type: Function,
+      required: true,
+    },
+    editMovie: {
       type: Function,
       required: true,
     },

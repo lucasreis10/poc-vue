@@ -2,7 +2,8 @@
   <div>
     <data-table-movie
       :movies="movies"
-      :deleteMovie="deleteMovie"
+      :delete-movie="deleteMovie"
+      :edit-movie="editMovie"
     />
     <v-btn
       data-test-movie="btn-new-movie"
@@ -21,9 +22,10 @@
 import DataTableMovie from '@/components/movie/DataTableMovie.vue';
 import { MOVIE_MODULE } from '@/store/movie/movieModule';
 import { MOVIE_ACTIONS } from '@/store/movie/movieActions';
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { MOVIE_GETTERS } from '@/store/movie/movieGetters';
 import notificationMixin from '@/mixin/util/notificationMixin';
+import { MOVIE_MUTATIONS } from '@/store/movie/movieMutations';
 
 export default {
   name: 'MovieView',
@@ -48,6 +50,9 @@ export default {
       findAllMovies: MOVIE_ACTIONS.FIND_ALL_MOVIES,
       deleteMovieAction: MOVIE_ACTIONS.DELETE_MOVIE,
     }),
+    ...mapMutations(MOVIE_MODULE, {
+      setMovie: MOVIE_MUTATIONS.UPDATE_MOVIE,
+    }),
 
     loadViewModel() {
       try {
@@ -60,6 +65,11 @@ export default {
 
     createNewMovie() {
       this.$router.push({ path: '/movies' });
+    },
+
+    editMovie(movie) {
+      this.setMovie(movie);
+      this.$router.push({ path: `/movies/${movie.id}` });
     },
 
     async deleteMovie(id) {

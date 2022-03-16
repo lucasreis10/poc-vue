@@ -6,6 +6,7 @@ export const MOVIE_MODULE = 'MOVIE_MODULE';
 
 const state = {
   movies: [],
+  movie: {},
 };
 
 export default {
