@@ -1,6 +1,9 @@
 <template>
   <div>
-    <data-table-movie :movies="movies"/>
+    <data-table-movie
+      :movies="movies"
+      :deleteMovie="deleteMovie"
+    />
     <v-btn
       data-test-movie="btn-new-movie"
       class="mx-2"
@@ -20,12 +23,17 @@ import { MOVIE_MODULE } from '@/store/movie/movieModule';
 import { MOVIE_ACTIONS } from '@/store/movie/movieActions';
 import { mapActions, mapGetters } from 'vuex';
 import { MOVIE_GETTERS } from '@/store/movie/movieGetters';
+import notificationMixin from '@/mixin/util/notificationMixin';
 
 export default {
   name: 'MovieView',
   components: { DataTableMovie },
 
-  created() {
+  mixins: [
+    notificationMixin,
+  ],
+
+  mounted() {
     this.loadViewModel();
   },
 
@@ -38,6 +46,7 @@ export default {
   methods: {
     ...mapActions(MOVIE_MODULE, {
       findAllMovies: MOVIE_ACTIONS.FIND_ALL_MOVIES,
+      deleteMovieAction: MOVIE_ACTIONS.DELETE_MOVIE,
     }),
 
     loadViewModel() {
@@ -51,6 +60,17 @@ export default {
 
     createNewMovie() {
       this.$router.push({ path: '/movies' });
+    },
+
+    async deleteMovie(id) {
+      try {
+        await this.deleteMovieAction(id);
+        this.showSuccesMessage('Successfully deleted movie.');
+        this.loadViewModel();
+      } catch (error) {
+        console.error(error);
+        this.showErrorMessage('Error deleting movie.');
+      }
     },
   },
 };

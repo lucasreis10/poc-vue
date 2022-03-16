@@ -37,7 +37,7 @@ export default {
         this.cancel();
         this.showSuccesMessage('Movie created successfully.');
       } catch (error) {
-        console.log(error);
+        console.error(error);
         this.showErrorMessage('Error creating movie.');
       }
     },

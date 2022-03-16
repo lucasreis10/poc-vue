@@ -14,4 +14,23 @@ export default {
       }
     }
     `,
+
+  UPDATE_MOVIE: gql`
+    mutation($updateMovieId: ID!, $input: UpdateMovieInput!) {
+      updateMovie(id: $updateMovieId, input: $input) {
+        id
+        name
+        imdbRating
+        duration
+        genre
+        year
+      }
+    }
+  `,
+
+  DELETE_MOVIE: gql`
+    mutation($deleteMovieId: ID!) {
+      deleteMovie(id: $deleteMovieId)
+    }
+  `,
 };
