@@ -1,18 +1,17 @@
 <template>
   <div>
     <data-table-movie
-      :movies="movies"
       :delete-movie="deleteMovie"
       :edit-movie="editMovie"
     />
     <v-btn
+      color="primary"
       data-test-movie="btn-new-movie"
-      class="mx-2"
-      fab
-      @click="createNewMovie">
-      <v-icon dark>
-        mdi-plus
-      </v-icon>
+      dark
+      class="mb-2 justify-end"
+      @click="createNewMovie"
+    >
+      New Movie
     </v-btn>
   </div>
 </template>
@@ -64,6 +63,7 @@ export default {
     },
 
     createNewMovie() {
+      this.setMovie({});
       this.$router.push({ path: '/movies' });
     },
 
@@ -75,8 +75,8 @@ export default {
     async deleteMovie(id) {
       try {
         await this.deleteMovieAction(id);
+        await this.loadViewModel();
         this.showSuccesMessage('Successfully deleted movie.');
-        this.loadViewModel();
       } catch (error) {
         console.error(error);
         this.showErrorMessage('Error deleting movie.');

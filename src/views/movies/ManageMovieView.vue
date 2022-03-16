@@ -3,18 +3,17 @@
     <form-movie
       :save="save"
       :cancel="cancel"
-      :movie="movieModel()"
+      :movie="movieModel"
     />
   </v-flex>
 </template>
 
 <script>
 import FormMovie from '@/components/movie/FormMovie.vue';
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import { MOVIE_MODULE } from '@/store/movie/movieModule';
 import { MOVIE_ACTIONS } from '@/store/movie/movieActions';
 import notificationMixin from '@/mixin/util/notificationMixin';
-import { MOVIE_GETTERS } from '@/store/movie/movieGetters';
 
 export default {
   name: 'ManageMovieView',
@@ -37,11 +36,13 @@ export default {
     this.movieId = this.$route.params.id;
   },
 
-  methods: {
-    ...mapGetters(MOVIE_MODULE, {
-      movieModel: MOVIE_GETTERS.GET_MOVIE,
+  computed: {
+    ...mapState(MOVIE_MODULE, {
+      movieModel: (state) => state.movie,
     }),
+  },
 
+  methods: {
     ...mapActions(MOVIE_MODULE, {
       createMovie: MOVIE_ACTIONS.CREATE_MOVIE,
       updateMovie: MOVIE_ACTIONS.UPDATE_MOVIE,

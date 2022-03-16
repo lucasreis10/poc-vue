@@ -22,10 +22,22 @@
           <td>{{ item.duration }}</td>
           <td>{{ item.year }}</td>
           <td>
-            <v-icon small class="mr-2" @click="editMovie(item)">mdi-pencil</v-icon>
+            <v-icon
+              small class="mr-2"
+              @click="editMovie(item)"
+              data-test-table-movie="btn-edit"
+            >
+              mdi-pencil
+            </v-icon>
           </td>
           <td>
-            <v-icon small class="mr-2" @click="deleteMovie(item.id)">mdi-delete</v-icon>
+            <v-icon
+              small class="mr-2"
+              @click="deleteMovie(item.id)"
+              data-test-table-movie="btn-delete"
+            >
+              mdi-delete
+            </v-icon>
           </td>
         </tr>
         </tbody>
@@ -35,13 +47,12 @@
 </template>
 
 <script>
+import { MOVIE_MODULE } from '@/store/movie/movieModule';
+import { mapState } from 'vuex';
+
 export default {
   name: 'DataTableMovie',
   props: {
-    movies: {
-      type: Array,
-      required: true,
-    },
     deleteMovie: {
       type: Function,
       required: true,
@@ -50,6 +61,12 @@ export default {
       type: Function,
       required: true,
     },
+  },
+
+  computed: {
+    ...mapState(MOVIE_MODULE, {
+      movies: (state) => state.movies,
+    }),
   },
 
 };
