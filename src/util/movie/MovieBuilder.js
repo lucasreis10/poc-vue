@@ -21,6 +21,17 @@ export default class MovieBuilder {
     return this;
   }
 
+  withoutId() {
+    delete this.newMovie.id;
+    return this;
+  }
+
+  withoutTypename() {
+    // eslint-disable-next-line no-underscore-dangle
+    delete this.newMovie.__typename;
+    return this;
+  }
+
   build() {
     return { ...this.newMovie };
   }

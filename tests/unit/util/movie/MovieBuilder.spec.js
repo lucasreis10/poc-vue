@@ -45,4 +45,22 @@ describe('MovieBuilder', () => {
       expect(newMovie.year).toBe(+year);
     });
   });
+
+  it('Remove propertie id', () => {
+    // setup:
+    const movie = MovieTestHelper.movieRequestGraphql();
+    // execute:
+    const newMovie = new MovieBuilder(movie).withoutId().build();
+    // verify:
+    expect(newMovie).not.toHaveProperty('id');
+  });
+
+  it('Remove propertie __typename', () => {
+    // setup:
+    const movie = MovieTestHelper.movieRequestGraphql();
+    // execute:
+    const newMovie = new MovieBuilder(movie).withoutTypename().build();
+    // verify:
+    expect(newMovie).not.toHaveProperty('__typename');
+  });
 });

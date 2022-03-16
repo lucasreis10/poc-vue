@@ -7,7 +7,7 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      lines: 50,
+      lines: 30,
     },
   },
   setupFiles: ['./tests/unit/setup.js'],

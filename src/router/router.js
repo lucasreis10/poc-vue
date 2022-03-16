@@ -16,6 +16,11 @@ const routes = [
     name: 'create new movie',
     component: ManageMovieView,
   },
+  {
+    path: '/movies/:id',
+    name: 'edit movie',
+    component: ManageMovieView,
+  },
 ];
 
 const router = new VueRouter({
