@@ -1,6 +1,6 @@
 # poc-vue
 
-<p>A POC tem como objetivo cria exemplos de testes unitários e e2e.</p>
+<p>A POC tem como objetivo cria exemplos de testes unitários e E2E.</p>
 
 ### Custodiante: Image Recognition
 
@@ -16,8 +16,7 @@
 É necessario instalar as seguintes ferramentas para executar a POC localmente:
 
 * [Node](https://nodejs.org/en/download/)
-* [Mock Server](https://www.npmjs.com/package/mock-json-server)
-  * `` npm install -g mock-json-server ``
+* [Docker](https://docs.docker.com/get-docker/) - Docker é necessário para executar o backend.
 
 
 ### Rodar testes
@@ -27,11 +26,25 @@
 npm run test:unit
 ```
 
-#### Testes end-to-end
+#### Testes End-To-End
+
+Para rodar teste E2E é necessário que o container backend esteja rodando localmente.
+``` 
+docker run -p 4000:4000 lucasc342/graphqlnode
+```
+
+Execução de teste E2E Cypress
+
 ```
 npm run test:e2e
 ```
 
+
+Execução de teste E2E headless Cypress
+
+```
+npm run test:e2e:headless
+```
 
 
 
