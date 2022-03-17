@@ -55,3 +55,6 @@ npm run test:e2e:headless
 * [Custom Data Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*)
 
 
+##Pirâmide de Testes
+
+![Pirâmide de Teste](public/piramide_de_teste.png)
