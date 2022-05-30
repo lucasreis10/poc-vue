@@ -25,7 +25,9 @@ describe('ManageMovieView', () => {
     cy.get('[data-test-form-movie="btn-save"]').click();
     cy.get('[data-test-snackbar="btn-close-message"]').click();
 
-    // Delete Movie
+
+
+    // Delete Movies
     cy.get('[data-test-table-movie="btn-delete"]').last().click();
     cy.get('[data-test-snackbar="btn-close-message"]').click({ timeout: 20000 });
     cy.reload();
